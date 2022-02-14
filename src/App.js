@@ -1,12 +1,14 @@
 import './App.css';
 import { ContextProvider } from './context/contextAPI';
 import { Details } from './components/balance'
+import { AddTransaction } from './components/addTrax'
 
 function App() {
   return (
     <ContextProvider>
           UseLess Minting Dapp
         <Details/>
+        <AddTransaction/>
     </ContextProvider>
   );
 }

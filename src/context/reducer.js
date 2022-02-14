@@ -10,20 +10,25 @@ export const AppReducer = (state, action) => {
                 ...state, symbol: action.payload
             }
 
-            case 'Pause_Status':
-                return {
-                    ...state, pause: action.payload
-                }
+        case 'Pause_Status':
+            return {
+                ...state, pause: action.payload
+            }
 
         case 'Get_Cost':
             return {
                 ...state, cost: action.payload
             }
 
-            case 'Get_Total_Minted':
-                return {
-                    ...state, max_mint: action.payload
-                }
+        case 'Get_Total_Minted':
+            return {
+                ...state, max_mint: action.payload
+            }
+
+        case 'Set_Pause':
+            return {
+                ...state, setPause: action.payload
+            }
 
 
 

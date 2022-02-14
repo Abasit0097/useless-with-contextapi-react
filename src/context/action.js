@@ -39,3 +39,11 @@ export const GetMinted = (totalMintedTokens) => {
 
     }
 }
+
+export const SetPause = (setPauseStatus) => {
+    return {
+        type: 'Set_Pause',
+        payload: setPauseStatus
+
+    }
+}

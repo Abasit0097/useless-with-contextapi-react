@@ -1,4 +1,56 @@
-//writing in contract with web3
+import Web3 from "web3";
+import { SetPause } from './action';
+import { abi } from './abi';
+
+
+export const SetPauseState = async(Transaction, dispatch) => {
+
+    try{
+        const web3 = new Web3(Web3.givenProvider);
+        await web3.givenProvider.enable();
+
+        const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+        const contract = new web3.eth.Contract(abi, contractAddress);
+        const accounts = await web3.eth.getAccounts();
+
+        const stateSetPause = contract.methods.pause(
+            Transaction.State.send({ from: accounts[0] })
+        );
+        console.log("paused status now = ", stateSetPause);
+        dispatch(SetPause(Transaction));
+
+    }
+
+    catch (error) {
+        console.log("set pause error =", error);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*writing in contract with web3
 
 const Web3 = require('web3')
 //const rpcURL = 'https://rinkeby.infura.io/v3/39f4588fa9b14c9ab5888675d3d58d43'
@@ -7,7 +59,7 @@ const Tx = require('ethereumjs-tx').Transaction;
 
 require("dotenv").config();
 
-const web3 = new Web3(rpcURL)
+const web3 = new Web3(rpcURL)*/
 
 
 /*const address1 = "0x4fa3D5b91fCF8bCDe7933FBb5F0295cC5812f74c"
@@ -21,7 +73,7 @@ const bufferPrivateKey = Buffer.from("privateKey", "hex");
 
 //with local host of hardhat
 
-const address1 = "0x70997970c51812dc3a010c7d01b50e0d17dc79c8"; // address of hardhat local host
+/*const address1 = "0x70997970c51812dc3a010c7d01b50e0d17dc79c8"; // address of hardhat local host
 const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3"; // contract address deployed at local host
 let contractABI = require("./abi");
 const privateKey = Buffer.from("59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d", 'hex'); // private key of localhost address
@@ -64,4 +116,4 @@ catch(e){
 
 }
 
-setPause();
+setPause();*/

@@ -7,7 +7,8 @@ const initialState = {
     symbol: " ",
     pause: " ",
     cost: " ",
-    max_mint: " "
+    max_mint: " ",
+    setPause: " "
 }
 
 export const UserContext = createContext(initialState);
