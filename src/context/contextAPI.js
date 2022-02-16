@@ -8,7 +8,8 @@ const initialState = {
     pause: " ",
     cost: " ",
     max_mint: " ",
-    setPause: " "
+    total_supply: " ",
+    mint_token: " ",
 }
 
 export const UserContext = createContext(initialState);

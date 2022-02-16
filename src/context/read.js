@@ -2,7 +2,7 @@
 
 import Web3 from 'web3';
 import abi from './abi';
-import { GetName, GetCost, GetSymbol, GetPauseStatus, GetMinted } from './action';
+import { GetName, GetCost, GetSymbol, GetPauseStatus, GetMinted, GetTotalSupply } from './action';
 
 
 /* const Web3 = require('web3')
@@ -56,9 +56,10 @@ export const LoadBlockChain = async(dispatch) => {
         dispatch(GetMinted(totalMintedTokens));
 
 
-       /* let tokentotalSupply = await contract.methods.totalSupply().call();
-        console.log('tokentotalSupply = ', tokentotalSupply)
- */
+       let totalSupply = await contract.methods.totalSupply().call();
+        console.log('tokentotalSupply = ', totalSupply)
+        dispatch(GetTotalSupply(totalSupply));
+
         //let tokenBalanceOf = await contract.methods.balanceOf("").call();
         //console.log('tokenBalanceOf = ', tokenBalanceOf)        
         

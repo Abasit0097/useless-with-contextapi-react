@@ -25,11 +25,17 @@ export const AppReducer = (state, action) => {
                 ...state, max_mint: action.payload
             }
 
-        case 'Set_Pause':
+        case 'Get_Total_Supply':
             return {
-                ...state, setPause: action.payload
+                ...state, total_supply: action.payload
             }
 
+            case 'Get_Mint_Token':
+            return {
+                ...state, mint_token: action.payload
+            }
+
+        
 
 
         default:

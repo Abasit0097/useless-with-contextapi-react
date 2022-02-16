@@ -40,10 +40,19 @@ export const GetMinted = (totalMintedTokens) => {
     }
 }
 
-export const SetPause = (setPauseStatus) => {
+export const GetTotalSupply = (totalSupply) => {
     return {
-        type: 'Set_Pause',
-        payload: setPauseStatus
+        type: 'Get_Total_Supply',
+        payload: totalSupply
 
     }
 }
+
+/*export const GetMintToken = (Transaction) => {
+    return {
+        type: 'Get_Mint_Token',
+        payload: Transaction
+
+    }
+}
+*/

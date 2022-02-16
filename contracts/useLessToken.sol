@@ -18,7 +18,7 @@ contract useLessToken is ERC721Enumerable, Ownable {
   uint256 public cost = 1 ether;
   uint256 public maxSupply = 100;
   uint256 public maxMintAmount = 5;
-  bool public paused = true;
+  bool public paused = false;
   bool public revaled = false;
   uint releaseTime = block.timestamp + 0 days; //time is only 4 minutes to check working
   uint salesEndTime = block.timestamp + 365 days;

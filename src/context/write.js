@@ -1,29 +1,38 @@
 import Web3 from "web3";
-import { SetPause } from './action';
-import { abi } from './abi';
+//import { GetMintToken} from './action'
 
 
-export const SetPauseState = async(Transaction, dispatch) => {
 
-    try{
+
+export const TranxBuyNFt = async (Transaction, dispatch) => {
+
+    try {
+
+        const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+        let abi = require('./abi');
+
         const web3 = new Web3(Web3.givenProvider);
         await web3.givenProvider.enable();
 
-        const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
         const contract = new web3.eth.Contract(abi, contractAddress);
         const accounts = await web3.eth.getAccounts();
 
-        const stateSetPause = contract.methods.pause(
-            Transaction.State.send({ from: accounts[0] })
-        );
-        console.log("paused status now = ", stateSetPause);
-        dispatch(SetPause(Transaction));
+        const buyNFT = await contract.methods.mint(Transaction.Amount)
+            .send({
+                from: accounts[0],
+                value: web3.utils.toWei(Transaction.Amount, 'ether')
+            });
+
+        console.log("buyNFT", buyNFT);
+        //dispatch(GetMintToken(Transaction))
 
     }
-
     catch (error) {
-        console.log("set pause error =", error);
+        console.log("error in write",error)
     }
+
+
+
 }
 
 
@@ -43,6 +52,66 @@ export const SetPauseState = async(Transaction, dispatch) => {
 
 
 
+
+
+
+/* import React, { useState } from "react";
+import Web3 from "web3";
+
+
+
+let abi = require('./abi');
+let contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+
+
+function BuyTrx() {
+    let [amount, setAmount] = useState();
+     async function doTrx() {
+            try{
+
+                const web3 = new Web3(Web3.givenProvider);
+                await web3.givenProvider.enable();
+
+                const contract = await new web3.eth.Contract(abi, contractAddress);
+                const accounts = await web3.eth.getAccounts();
+                console.log("abc =",accounts)
+
+                const buyNFT = await contract.methods.mint(amount)
+                .send({ from: accounts[0],
+                value: web3.utils.toWei(amount, 'ether')
+                });
+
+                console.log("buyNFT", buyNFT);
+            }
+            catch (error) {
+                console.log("error =", error);
+            }
+        }
+
+    return(
+        <div>
+            <div>
+            <input type="amount" value={amount || ''} id="ex" onChange={(e)=> setAmount(e.target.value)} placeholder="Enter no of NFTs" />
+            </div>
+
+            <div>
+                <button onClick={() => {
+                    if (amount > 0) {
+                        doTrx()
+                    }
+                    else alert("Please enter valid number")
+                }}>
+                    Buy NFT
+                </button>
+
+            </div>
+
+        </div>
+    )
+}
+
+export default BuyTrx;
+ */
 
 
 
