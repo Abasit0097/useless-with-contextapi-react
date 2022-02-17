@@ -11,6 +11,7 @@ const initialState = {
     total_supply: " ",
     mint_token: " ",
     balance_of: " ",
+    account_connected: " "
 }
 
 export const UserContext = createContext(initialState);
