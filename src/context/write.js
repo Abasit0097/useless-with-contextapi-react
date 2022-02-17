@@ -49,12 +49,6 @@ export const TranxBuyNFt = async (Transaction, dispatch) => {
 
 
 
-
-
-
-
-
-
 /* import React, { useState } from "react";
 import Web3 from "web3";
 

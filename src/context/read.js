@@ -2,7 +2,7 @@
 
 import Web3 from 'web3';
 import abi from './abi';
-import { GetName, GetCost, GetSymbol, GetPauseStatus, GetMinted, GetTotalSupply } from './action';
+import { GetName, GetCost, GetSymbol, GetPauseStatus, GetMinted, GetTotalSupply, GetBalanceOf, GetAccount } from './action';
 
 
 /* const Web3 = require('web3')
@@ -26,6 +26,7 @@ export const LoadBlockChain = async(dispatch) => {
 
             const accounts = await web3.eth.getAccounts();
             console.log("Account", accounts);
+            dispatch(GetAccount(accounts))
 
         const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3' // ganache localhost contract deployment address
 
@@ -59,6 +60,10 @@ export const LoadBlockChain = async(dispatch) => {
        let totalSupply = await contract.methods.totalSupply().call();
         console.log('tokentotalSupply = ', totalSupply)
         dispatch(GetTotalSupply(totalSupply));
+
+        let balanceOfAddress = await contract.methods.balanceOf(accounts[0]).call();
+        console.log('balanceOfAddress = ', balanceOfAddress)
+        dispatch(GetBalanceOf(balanceOfAddress));
 
         //let tokenBalanceOf = await contract.methods.balanceOf("").call();
         //console.log('tokenBalanceOf = ', tokenBalanceOf)        

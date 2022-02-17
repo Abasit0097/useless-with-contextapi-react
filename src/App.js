@@ -9,7 +9,7 @@ function App() {
     <ContextProvider >
           UseLess Minting Dapp
           <Details/>
-        <AddTransaction/>
+          <AddTransaction/>
     </ContextProvider>
   );
 }

@@ -48,6 +48,23 @@ export const GetTotalSupply = (totalSupply) => {
     }
 }
 
+export const GetBalanceOf = (balanceOfAddress) => {
+    return {
+        type: 'Get_Balance_Of',
+        payload: balanceOfAddress
+
+    }
+}
+
+export const GetAccount = (accounts) => {
+    return {
+        type: 'Get_Account',
+        payload: accounts
+
+    }
+}
+
+
 /*export const GetMintToken = (Transaction) => {
     return {
         type: 'Get_Mint_Token',

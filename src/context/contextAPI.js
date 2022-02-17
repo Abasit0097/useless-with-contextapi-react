@@ -10,6 +10,7 @@ const initialState = {
     max_mint: " ",
     total_supply: " ",
     mint_token: " ",
+    balance_of: " ",
 }
 
 export const UserContext = createContext(initialState);

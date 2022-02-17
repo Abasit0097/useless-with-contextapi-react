@@ -35,6 +35,16 @@ export const AppReducer = (state, action) => {
                 ...state, mint_token: action.payload
             }
 
+            case 'Get_Balance_Of':
+            return {
+                ...state, balance_of: action.payload
+            }
+
+            case 'Get_Account':
+            return {
+                ...state, account_connected: action.payload
+            }
+
         
 
 
